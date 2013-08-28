@@ -85,9 +85,10 @@ if(!isset($paramters['tumblr']['blog'])){
 
 $options = array(
 	'type' => 'text',
-	'title' => $argTags,
+	'title' => 'title',
 	'tags' => $argTags,
 	'body' => file_get_contents($argPostFile),
+	'format' => 'markdown',
 	#'state' => 'queue',
 );
 
@@ -100,17 +101,14 @@ try{
 	}
 	print 'done: ';
 	if($res){
-		$successfull++;
 		print $res->id;
 	}
 	else{
-		$errors++;
 		print 'failed';
 	}
 }
 catch(Exception $e){
 	print 'ERROR: '.$e->getMessage();
-	$errors++;
 }
 print "\n";
 
